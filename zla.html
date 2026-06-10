@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☠️ CHAOS ☠️ - Wersja koszmarna</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00); /* Agresywny gradient */
+            color: #00ff00; /* Neonowa zieleń na jasnym tle - brak kontrastu */
+            font-family: "Impact", "Comic Sans MS", sans-serif; /* Bardzo nieczytelny font */
+            margin: 0;
+            padding: 10px;
+        }
+        
+        /* Migający tekst */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .blinker {
+            animation: blink 0.5s infinite;
+            color: red;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .marquee-box {
+            background: yellow;
+            color: black;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Chaotyczny układ */
+        .grid-chaos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            transform: rotate(-1deg);
+        }
+
+        .box {
+            background: #000;
+            border: 5px dashed red;
+            padding: 40px;
+            width: 30%;
+            position: relative;
+        }
+
+        /* Ukryta, zła nawigacja */
+        .hidden-nav {
+            background: #ff00ff;
+            padding: 5px;
+        }
+        .hidden-nav a {
+            color: #ff22ff; /* Kolor prawie identyczny jak tło! */
+            font-size: 10px;
+            margin-right: 5px;
+        }
+
+        .popup-simulation {
+            background: white;
+            color: black;
+            border: 10px solid black;
+            position: fixed;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            padding: 20px;
+            z-index: 9999;
+            box-shadow: 10px 10px 0px red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="popup-simulation" id="popup">
+        <h2>⚠️ UWAGA!!! WYGRAŁEŚ IPhona! ⚠️</h2>
+        <p>Kliknij X żeby zamknąć albo OK! REKLAMA REKLAMA REKLAMA!</p>
+        <button onclick="document.getElementById('popup').style.display='none'">X (ZAMKNIJ)</button>
+    </div>
+
+    <div class="marquee-box">
+        <marquee scrollamount="15">!!! KUP TERAZ !!! PROMOCJA !!! AUDIO AUTOPLAY AKTYWNE !!! CHCESZ TO ZOBACZYĆ !!!</marquee>
+    </div>
+
+    <div class="blinker">⚠️ OSTRZEŻENIE: OCZY BĘDĄ BOLAŁY! ⚠️</div>
+
+    <div class="hidden-nav">
+        <span>ZGADNIJ GDZIE LINKI:</span>
+        <a href="index.html">POWRÓT DO DOBREJ STRONY (UKRYTY LINK)</a>
+        <a href="#">TUTAJ NIC NIE MA</a>
+        <a href="#">LOSOWY LINK</a>
+    </div>
+
+    <hr>
+
+    <div class="grid-chaos">
+        <div class="box">
+            <h3>NAGŁÓWEK 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tekst się zlewa z tłem i nic nie widać, prawda? O to chodziło!</p>
+        </div>
+        <div class="box" style="margin-top: 100px; background: blue;">
+            <h3>LOSOWE INFORMACJE</h3>
+            <p>W spektrum autyzmu przebodźcowanie sensoryczne powoduje fizyczny ból i lęk. Ta strona idealnie to odwzorowuje. Nadmiar bodźców uniemożliwia przeczytanie czegokolwiek.</p>
+            <a href="index.html" style="color: yellow; font-size: 25px;">WEŹ MNIE STĄD! (Ucieczka)</a>
+        </div>
+        <div class="box">
+            <h3>REKLAMY!!!</h3>
+            <p>KUP BUTY KUP AUTO KUP WSZYSTKO KUP TERAZ KUP TERAZ KUP TERAZ!</p>
+        </div>
+    </div>
+
+    <audio autoplay loop src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
+
+</body>
+</html>
