@@ -11,6 +11,7 @@
             font-family: "Impact", "Comic Sans MS", sans-serif; /* Bardzo nieczytelny font */
             margin: 0;
             padding: 10px;
+            overflow-x: hidden;
         }
         
         /* Migający tekst */
@@ -20,7 +21,7 @@
             100% { opacity: 1; }
         }
         .blinker {
-            animation: blink 0.5s infinite;
+            animation: blink 0.3s infinite; /* Jeszcze szybsze miganie */
             color: red;
             font-size: 30px;
             text-align: center;
@@ -47,7 +48,6 @@
             border: 5px dashed red;
             padding: 40px;
             width: 30%;
-            position: relative;
         }
 
         /* Ukryta, zła nawigacja */
@@ -56,44 +56,52 @@
             padding: 5px;
         }
         .hidden-nav a {
-            color: #ff22ff; /* Kolor prawie identyczny jak tło! */
+            color: #ff22ff; /* Kolor prawie identyczny jak tło */
             font-size: 10px;
             margin-right: 5px;
         }
 
+        /* Uciekający pop-up */
         .popup-simulation {
             background: white;
             color: black;
             border: 10px solid black;
-            position: fixed;
-            top: 20%;
-            left: 20%;
-            width: 60%;
+            position: absolute; /* Zmienione na absolute, żeby skrypt mógł nim rzucać po ekranie */
+            top: 30%;
+            left: 35%;
+            width: 350px;
             padding: 20px;
             z-index: 9999;
             box-shadow: 10px 10px 0px red;
+            transition: all 0.1s ease; /* Krótka animacja ucieczki */
+        }
+
+        .popup-simulation button {
+            background: red;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
     <div class="popup-simulation" id="popup">
-        <h2>⚠️ UWAGA!!! WYGRAŁEŚ IPhona! ⚠️</h2>
-        <p>Kliknij X żeby zamknąć albo OK! REKLAMA REKLAMA REKLAMA!</p>
-        <button onclick="document.getElementById('popup').style.display='none'">X (ZAMKNIJ)</button>
+        <h2>⚠️ UWAGA!!! WYGRAŁEŚ! ⚠️</h2>
+        <p>Kliknij X żeby zamknąć reklamy!</p>
+        <button id="close-btn" onmouseover="escapePopup()" onclick="escapePopup()">X (ZAMKNIJ)</button>
     </div>
 
     <div class="marquee-box">
-        <marquee scrollamount="15">!!! KUP TERAZ !!! PROMOCJA !!! AUDIO AUTOPLAY AKTYWNE !!! CHCESZ TO ZOBACZYĆ !!!</marquee>
+        <marquee scrollamount="20">!!! KUP TERAZ !!! PROMOCJA !!! GRA GŁOŚNA MUZYKA BEZ TWOJEJ ZGODY !!! IRYTACJA 100% !!!</marquee>
     </div>
 
-    <div class="blinker">⚠️ OSTRZEŻENIE: OCZY BĘDĄ BOLAŁY! ⚠️</div>
+    <div class="blinker">⚠️ OSTRZEŻENIE: OCZY I USZY BĘDĄ BOLAŁY! ⚠️</div>
 
     <div class="hidden-nav">
         <span>ZGADNIJ GDZIE LINKI:</span>
         <a href="index.html">POWRÓT DO DOBREJ STRONY (UKRYTY LINK)</a>
-        <a href="#">TUTAJ NIC NIE MA</a>
-        <a href="#">LOSOWY LINK</a>
     </div>
 
     <hr>
@@ -101,20 +109,31 @@
     <div class="grid-chaos">
         <div class="box">
             <h3>NAGŁÓWEK 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tekst się zlewa z tłem i nic nie widać, prawda? O to chodziło!</p>
+            <p>Tekst się zlewa z tłem i nic nie widać, prawda? O to chodziło! Hałas w tle dodatkowo uniemożliwia skupienie.</p>
         </div>
         <div class="box" style="margin-top: 100px; background: blue;">
-            <h3>LOSOWE INFORMACJE</h3>
-            <p>W spektrum autyzmu przebodźcowanie sensoryczne powoduje fizyczny ból i lęk. Ta strona idealnie to odwzorowuje. Nadmiar bodźców uniemożliwia przeczytanie czegokolwiek.</p>
+            <h3>UCIEKAJ STĄD</h3>
+            <p>W spektrum autyzmu taki atak sensoryczny wywołuje ogromny stres.</p>
             <a href="index.html" style="color: yellow; font-size: 25px;">WEŹ MNIE STĄD! (Ucieczka)</a>
-        </div>
-        <div class="box">
-            <h3>REKLAMY!!!</h3>
-            <p>KUP BUTY KUP AUTO KUP WSZYSTKO KUP TERAZ KUP TERAZ KUP TERAZ!</p>
         </div>
     </div>
 
-    <audio autoplay loop src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0" allow="autoplay" style="display:none;"></iframe>
+    <audio autoplay loop src="https://storage.googleapis.com/codeskulptor-assets/gamedata/popcorn.ogg"></audio>
+
+    <script>
+        function escapePopup() {
+            const popup = document.getElementById('popup');
+            
+            // Losowe pozycje w granicach okna przeglądarki
+            const randomX = Math.floor(Math.random() * (window.innerWidth - 400));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - 300));
+            
+            // Przypisanie nowych pozycji pop-upowi
+            popup.style.left = randomX + 'px';
+            popup.style.top = randomY + 'px';
+        }
+    </script>
 
 </body>
 </html>
